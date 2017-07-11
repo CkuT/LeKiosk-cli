@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class HelloCommand extends Command {
 
     protected function configure() {
-        $this->setName('hello');
+        $this->setName('hello-wolrd');
         $this->setDescription('Hello world command.');
     }
 
