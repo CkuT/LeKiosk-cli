@@ -8,6 +8,7 @@ use Symfony\Component\Console\Application;
 
 $application = new Application('LeKiosk-cli', '@package_version@');
 
+$application->add(new Command\UpdateCommand());
 $application->add(new Command\HelloCommand());
 
 $application->run();
