@@ -38,7 +38,7 @@ class SelfUpdateCommand extends Command {
 
         $this->updater->getStrategy()->setPharUrl(self::LAST_PHAR_URL);
         $this->updater->getStrategy()->setVersionUrl(self::LAST_VERSION_URL);
-        $this->updater->setBackupPath(sys_get_temp_dir());
+        $this->updater->setBackupPath(sys_get_temp_dir().DIRECTORY_SEPARATOR.'lekiosk-cli_backup.phar');
 
         if ($input->getOption('rollback')) {
             $this->rollback();
