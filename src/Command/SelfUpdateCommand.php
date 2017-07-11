@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class UpdateCommand extends Command {
+class SelfUpdateCommand extends Command {
 
     const LAST_PHAR_URL = 'https://jcolfej.github.io/LeKiosk-cli/latest/lekiosk-cli.phar';
     const LAST_VERSION_URL = 'https://jcolfej.github.io/LeKiosk-cli/latest/version';
@@ -21,7 +21,7 @@ class UpdateCommand extends Command {
 
     protected function configure() {
 
-        $this->setName('update');
+        $this->setName('self-update');
         $this->setDescription('Update to most recent build.');
 
         $this->addOption('rollback', 'r', InputOption::VALUE_NONE, 'Rollback to previous version if available on filesystem.');
