@@ -10,7 +10,7 @@ class HelloCommand extends Command {
 
     protected function configure() {
         $this->setName('hello-wolrd');
-        $this->setDescription('Hello world command.');
+        $this->setDescription('Hello World');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
