@@ -32,8 +32,11 @@
     "scripts": {
         "test": "phpunit --colors=always",
         "build": [
-            
-            "box build"
+            "box build",
+            "git checkout website",
+            "git add lekiosk-cli",
+            "git commit -m 'New Release'",
+            "git checkout master"
         ]
     }
 }
