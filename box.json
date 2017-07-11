@@ -20,7 +20,7 @@
         }
     ],
     "git-version": "package_version",
-    "main": "bin/cliph",
+    "main": "bin/lekiosk-cli",
     "output": "lekiosk-cli.phar",
     "stub": true
 }
