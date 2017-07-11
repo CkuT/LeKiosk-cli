@@ -38,6 +38,7 @@ class UpdateCommand extends Command {
 
         $this->updater->getStrategy()->setPharUrl(self::LAST_PHAR_URL);
         $this->updater->getStrategy()->setVersionUrl(self::LAST_VERSION_URL);
+        $this->updater->getStrategy()->setBackupPath(sys_get_temp_dir());
 
         if ($input->getOption('rollback')) {
             $this->rollback();
