@@ -20,7 +20,7 @@ class UpdateCommand extends Command {
 
     protected function execute(InputInterface $input, OutputInterface $output) {
 
-        $updater = new Updater();
+        $updater = new Updater(null, false);
 
         $updater->getStrategy()->setPharUrl(self::LAST_PHAR_URL);
         $updater->getStrategy()->setVersionUrl(self::LAST_VERSION_URL);
