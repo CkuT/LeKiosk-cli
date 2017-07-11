@@ -1,0 +1,26 @@
+{
+    "chmod": "0755",
+    "directories": [
+        "src"
+    ],
+    "files": [
+        "LICENSE"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                "test",
+                "tests",
+                "Test",
+                "Tests",
+                "Tester"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "git-version": "package_version",
+    "main": "bin/cliph",
+    "output": "lekiosk-cli.phar",
+    "stub": true
+}
