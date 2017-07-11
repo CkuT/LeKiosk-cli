@@ -1,0 +1,31 @@
+{
+    "name": "jcolfej/lekiosk-cli",
+    "description": "LeKiosk with CLI power !",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jColfej",
+            "email": "contact@colfej.fr"
+        }
+    ],
+    "require": {
+        "symfony/console": "^3.3",
+        "symfony/yaml": "^3.3",
+        "windwalker/crypt": "^3.2",
+        "symfony/filesystem": "^3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2",
+        "kherge/box": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Colfej\\LeKioskCLI\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Colfej\\LeKioskCLI\\Tests\\": "tests"
+        }
+    }
+}
