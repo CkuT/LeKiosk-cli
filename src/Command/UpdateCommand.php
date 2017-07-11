@@ -78,9 +78,9 @@ class UpdateCommand extends Command {
         try {
 
             if ($this->updater->hasUpdate()) {
-                $this->output->writeln(sprintf('The current build available remotely is : <options=bold>%s</options=bold>', $this->updater->getNewVersion()));
+                $this->output->writeln(sprintf('The current build available remotely is : <options=bold>%s</options=bold>', $this->updater->getOldVersion()));
             } elseif (!$this->updater->getNewVersion()) {
-                $this->output->writeln('There are no new builds available.');
+                $this->output->writeln('There are no builds available.');
             } else {
                 $this->output->writeln('You have the last build installed.');
             }
