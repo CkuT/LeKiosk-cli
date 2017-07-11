@@ -34,7 +34,10 @@
         "build": [
             "box build",
             "git checkout website",
-            "git add lekiosk-cli",
+            "rm latest/lekiosk-cli.phar",
+            "mv lekiosk-cli.phar latest/",
+            "echo \"Lol$(openssl sha1 latest/lekiosk-cli.phar | cut -d\" \" -f2)\"",
+            "git add latest/lekiosk-cli.phar",
             "git commit -m 'New Release'",
             "git checkout master"
         ]
