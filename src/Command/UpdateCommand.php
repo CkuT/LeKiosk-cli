@@ -60,7 +60,7 @@ class UpdateCommand extends Command {
             $result = $this->updater->rollback();
 
             if ($result) {
-                $this->output->writeln('<fg=green>LeKiosk-cli has been rolled back to prior version.</fg=green>');
+                $this->output->writeln('<fg=green>LeKiosk-cli has been rolled back.</fg=green>');
             } else {
                 $this->output->writeln('<fg=red>Rollback failed for reasons unknown ...</fg=red>');
             }
@@ -78,7 +78,7 @@ class UpdateCommand extends Command {
         try {
 
             if ($this->updater->hasUpdate()) {
-                $this->output->writeln(sprintf('The current build available remotely is : <options=bold>%s</options=bold>', $this->updater->getOldVersion()));
+                $this->output->writeln('There is a new build available remotely !');
             } elseif (!$this->updater->getNewVersion()) {
                 $this->output->writeln('There are no builds available.');
             } else {
@@ -98,20 +98,11 @@ class UpdateCommand extends Command {
         try {
 
             $result = $this->updater->update();
-
-            $newVersion = $this->updater->getNewVersion();
-            $oldVersion = $this->updater->getOldVersion();
         
             if ($result) {
-
                 $this->output->writeln('<fg=green>LeKiosk-cli has been updated.</fg=green>');
-                $this->output->writeln(sprintf('<fg=green>Current version is :</fg=green> <options=bold>%s</options=bold>.', $newVersion));
-                $this->output->writeln(sprintf('<fg=green>Previous version was :</fg=green> <options=bold>%s</options=bold>.', $oldVersion));
-
             } else {
-
                 $this->output->writeln('<fg=green>LeKiosk-cli is currently up to date.</fg=green>');
-                $this->output->writeln(sprintf('<fg=green>Current version is:</fg=green> <options=bold>%s</options=bold>.', $oldVersion));
             }
 
         } catch (\Exception $e) {
