@@ -15,7 +15,8 @@ class UpdateCommand extends Command {
     const LAST_VERSION_URL = 'https://jcolfej.github.io/LeKiosk-cli/latest/version';
 
     protected $output;
-    protected $version;
+    protected $formatter;
+
     protected $updater;
 
     protected function configure() {
@@ -31,8 +32,7 @@ class UpdateCommand extends Command {
     protected function execute(InputInterface $input, OutputInterface $output) {
 
         $this->output = $output;
-
-        $this->version = $this->getApplication()->getVersion();
+        $this->formatter = $this->getHelper('formatter');
 
         $this->updater = new Updater(null, false);
 
@@ -66,14 +66,14 @@ class UpdateCommand extends Command {
             }
 
         } catch (\Exception $e) {
-            $this->output->writeln(sprintf('Error : <fg=yellow>%s</fg=yellow>', $e->getMessage()));
+            $error = array('Error ...', $e->getMessage());
+            $block = $this->formatter->formatBlock($error, 'error');
+            $this->output->writeln($block);
         }
 
     }
 
     protected function check() {
-
-        $this->output->writeln(sprintf('Your current local build version is : <options=bold>%s</options=bold>', $this->version));
 
         try {
 
@@ -86,7 +86,9 @@ class UpdateCommand extends Command {
             }
 
         } catch (\Exception $e) {
-            $this->output->writeln(sprintf('Error : <fg=yellow>%s</fg=yellow>', $e->getMessage()));
+            $error = array('Error ...', $e->getMessage());
+            $block = $this->formatter->formatBlock($error, 'error');
+            $this->output->writeln($block);
         }
 
     }
@@ -106,7 +108,9 @@ class UpdateCommand extends Command {
             }
 
         } catch (\Exception $e) {
-            $this->output->writeln(sprintf('Error : <fg=yellow>%s</fg=yellow>', $e->getMessage()));
+            $error = array('Error ...', $e->getMessage());
+            $block = $this->formatter->formatBlock($error, 'error');
+            $this->output->writeln($block);
         }
 
     }
