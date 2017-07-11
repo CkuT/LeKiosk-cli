@@ -16,7 +16,7 @@ class UpdateCommand extends Command
     {
         $this
             ->setName('update')
-            ->setDescription('Updates to the latest version')
+            ->setDescription('Self-update to the latest version')
         ;
     }
 
