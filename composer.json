@@ -34,7 +34,7 @@
         "test": "phpunit --colors=always",
         "build": [
             "box build",
-            "git checkout website",
+            "git checkout gh-pages",
             "rm latest/lekiosk-cli.phar",
             "mv lekiosk-cli.phar latest/",
             "echo \"[{'name':'lekiosk-cli.phar','sha1':'$(openssl sha1 latest/lekiosk-cli.phar | cut -d\" \" -f2)','url':'https://jcolfej.github.io/LeKiosk-cli/latest/lekiosk-cli.phar','version':'$(./latest/lekiosk-cli.phar --version | cut -d\" \" -f2)'}]\" > ./latest/manifest.json",
