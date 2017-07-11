@@ -1,8 +1,8 @@
 <?php
 
-namespace Colfej\LeKioskCLI\Tests\Command;
+namespace Colfej\LeKioskCLI\Test\Command;
 
-use Colfej\LeKioskCLI\Tests\AppTestCase;
+use Colfej\LeKioskCLI\Test\AppTestCase;
 
 class HelloCommandTest extends AppTestCase {
 

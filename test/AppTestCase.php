@@ -1,6 +1,6 @@
 <?php
 
-namespace Colfej\LeKioskCLI\Tests;
+namespace Colfej\LeKioskCLI\Test;
 
 use Colfej\LeKioskCLI\Command;
 
