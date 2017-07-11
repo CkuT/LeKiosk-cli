@@ -11,7 +11,7 @@ class HelloCommand extends Command {
     protected function configure() {
         $this
             ->setName('hello')
-            ->setDescription('Say hello !!!')
+            ->setDescription('Say hello')
         ;
     }
 
