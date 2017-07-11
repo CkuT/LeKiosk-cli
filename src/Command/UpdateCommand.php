@@ -29,7 +29,7 @@ class UpdateCommand extends Command {
             $result = $updater->update();
             echo $result ? "Updated!\n" : "No update needed!\n";
         } catch (\Exception $e) {
-            echo "Well, something happened! Either an oopsie or something involving hackers.\n";
+            print_r($e);
             exit(1);
         }
         
