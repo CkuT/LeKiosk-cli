@@ -3,7 +3,7 @@
 namespace Colfej\LeKioskCLI\Command;
 
 use Colfej\LeKioskCLI\Configuration;
-use Colfej\LeKioskCLI\Api;
+use Colfej\LeKioskCLI\Api\Stores;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -44,7 +44,7 @@ class ConfigureCommand extends Command {
 
         $this->output->writeln('Test configuration ...', OutputInterface::VERBOSITY_VERBOSE);
 
-        $return = Api::get('/v1/stores');
+        $return = Stores::getList();
 
         $this->output->writeln('<fg=green>LeKiosk-cli is configured.</fg=green>');
 

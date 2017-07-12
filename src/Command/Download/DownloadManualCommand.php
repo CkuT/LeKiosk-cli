@@ -2,6 +2,9 @@
 
 namespace Colfej\LeKioskCLI\Command\Download;
 
+use Colfej\LeKioskCLI\Api\Reader;
+use Colfej\LeKioskCLI\Helper;
+
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -27,9 +30,60 @@ class DownloadManualCommand extends Command {
 
     protected function execute(InputInterface $input, OutputInterface $output) {
         
-        $output->writeln('To do ...');
+        self::download($input, $output, $input->getArgument('id_publication'), $input->getArgument('id_issue'));
 
-        print_r($input->getArguments());
+    }
+
+    public static function download(InputInterface $input, OutputInterface $output, $idPublication, $idIssue) {
+
+        $output->writeln('Download pages ...');
+
+        $info = Reader::download($idPublication, $idIssue, $output);
+
+        if ($input->getOption('pdf')) {
+
+            $output->writeln('Create PDF ...');
+
+            $files = array();
+
+            foreach (scandir($info['path']) as $file) {
+                if (is_file($info['path'].$file)) {
+                    $files[] = $info['path'].$file;
+                }
+            }
+            
+            $pdf = new \Imagick($files);
+            $pdf->setImageFormat('pdf');
+            $pdf->writeImages('.'.DIRECTORY_SEPARATOR.$info['sanitize'].'.pdf', true);
+
+        }
+
+        if ($input->getOption('zip')) {
+
+            $output->writeln('Create ZIP ...');
+
+            $zip = new \ZipArchive();
+            $zip->open('.'.DIRECTORY_SEPARATOR.$info['sanitize'].'.zip', \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+            foreach (scandir($info['path']) as $file) {
+                if (is_file($info['path'].$file)) {
+                    $zip->addFile($info['path'].$file, $file);
+                }
+            }
+
+            $zip->close();
+
+        }
+
+        if ($input->getOption('clean')) {
+
+            $output->writeln('Clean ...');
+
+            Helper::deleteDirectory($info['path']);
+
+        } else {
+            rename($info['path'], '.'.DIRECTORY_SEPARATOR.$info['sanitize'].DIRECTORY_SEPARATOR);
+        }
 
     }
 
