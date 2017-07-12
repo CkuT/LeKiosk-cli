@@ -10,9 +10,7 @@
     ],
     "require": {
         "symfony/console": "^3.3",
-        "symfony/yaml": "^3.3",
         "windwalker/crypt": "^3.2",
-        "symfony/filesystem": "^3.3",
         "padraic/phar-updater": "dev-master"
     },
     "require-dev": {

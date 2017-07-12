@@ -9,6 +9,10 @@ use Symfony\Component\Console\Application;
 $application = new Application('LeKiosk-cli', '@package_version@');
 
 $application->add(new Command\SelfUpdateCommand());
-$application->add(new Command\HelloCommand());
+
+$application->add(new Command\ConfigureCommand());
+
+$application->add(new Command\Download\DownloadManualCommand());
+$application->add(new Command\Download\DownloadLinkCommand());
 
 $application->run();
