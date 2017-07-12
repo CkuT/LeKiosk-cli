@@ -11,7 +11,8 @@
     "require": {
         "symfony/console": "^3.3",
         "windwalker/crypt": "^3.2",
-        "padraic/phar-updater": "dev-master"
+        "padraic/phar-updater": "dev-master",
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.2",

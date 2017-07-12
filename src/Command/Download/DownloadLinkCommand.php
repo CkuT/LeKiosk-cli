@@ -2,6 +2,8 @@
 
 namespace Colfej\LeKioskCLI\Command\Download;
 
+use Colfej\LeKioskCLI\Api\Reader;
+
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -26,9 +28,11 @@ class DownloadLinkCommand extends Command {
 
     protected function execute(InputInterface $input, OutputInterface $output) {
 
-        $output->writeln('To do ...');
+        if (!($data = Reader::isReaderLink($input->getArgument('link')))) {
+            throw new \Exception('This is not a reader link ...');
+        }
 
-        print_r($input->getArguments());
+        DownloadManualCommand::download($input, $output, $data['id_publication'], $data['id_issue']);
 
     }
 
