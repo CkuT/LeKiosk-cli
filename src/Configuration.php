@@ -16,7 +16,13 @@ abstract class Configuration {
 
         $crypt = new Crypt(new BlowfishCipher);
 
-        $file = fopen(self::getConfigPath(), 'r');
+        $path = self::getConfigPath();
+
+        if (!is_file($path)) {
+            throw new \Exception('Configuration file not found ...');
+        }
+
+        $file = fopen($path, 'r');
         $content = fread($file, filesize(self::getConfigPath()));
         fclose($file);
 

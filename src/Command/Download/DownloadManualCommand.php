@@ -21,10 +21,12 @@ class DownloadManualCommand extends Command {
         $this->addArgument('id_publication', InputArgument::REQUIRED, 'Publication ID');
         $this->addArgument('id_issue', InputArgument::REQUIRED, 'Issue ID');
 
-        $this->addOption('clean', 'c', InputOption::VALUE_NONE, 'Delete original data.');
+        $this->addOption('clean', 'd', InputOption::VALUE_NONE, 'Delete original data.');
 
         $this->addOption('pdf', 'p', InputOption::VALUE_NONE, 'Convert to PDF.');
         $this->addOption('zip', 'z', InputOption::VALUE_NONE, 'Convert to ZIP.');
+
+        $this->addOption('cover', 'c', InputOption::VALUE_NONE, 'Get cover image.');
 
     }
 
@@ -72,6 +74,14 @@ class DownloadManualCommand extends Command {
             }
 
             $zip->close();
+
+        }
+
+        if ($input->getOption('cover')) {
+
+            $output->writeln('Copy cover ...');
+
+            copy($info['path'].'001.jpg', '.'.DIRECTORY_SEPARATOR.$info['sanitize'].'.jpg');
 
         }
 
