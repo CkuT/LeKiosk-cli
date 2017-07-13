@@ -19,7 +19,7 @@ class DownloadLinkCommand extends Command {
 
         $this->addArgument('link', InputArgument::REQUIRED, 'Issue link');
 
-        $this->addOption('clean', 'c', InputOption::VALUE_NONE, 'Delete original data.');
+        $this->addOption('clean', 'd', InputOption::VALUE_NONE, 'Delete original data.');
 
         $this->addOption('pdf', 'p', InputOption::VALUE_NONE, 'Convert to PDF.');
         $this->addOption('zip', 'z', InputOption::VALUE_NONE, 'Convert to ZIP.');
