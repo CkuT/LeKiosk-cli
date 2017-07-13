@@ -24,6 +24,8 @@ class DownloadLinkCommand extends Command {
         $this->addOption('pdf', 'p', InputOption::VALUE_NONE, 'Convert to PDF.');
         $this->addOption('zip', 'z', InputOption::VALUE_NONE, 'Convert to ZIP.');
 
+        $this->addOption('cover', 'c', InputOption::VALUE_NONE, 'Get cover image.');
+
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
