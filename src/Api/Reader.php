@@ -24,7 +24,7 @@ abstract class Reader {
 
     public static function get($idPublication, $idIssue) {
 
-        $response = Request::get('reader/publications/'.$idPublication.'/issues/'.$idIssue.'/signedurls');
+        $response = Request::get('reader/publications/'.$idPublication.'/issues/'.$idIssue.'/signedurls/');
         $content = $response['result'];
 
         return $content;

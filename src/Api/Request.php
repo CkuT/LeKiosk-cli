@@ -25,7 +25,8 @@ abstract class Request {
                 'base_uri'  =>  self::URL,
                 'auth'      =>  [$config['username'], $config['password']],
                 'headers'   =>  [
-                    'User-Agent'    =>  self::USER_AGENT
+                    'User-Agent'    =>  self::USER_AGENT,
+                    'Accept'        =>  'Content-Type:application/json;appVersion:4.0.1;Authorization:Basic '.base64_encode($config['username'].':'.$config['password'])
                 ]
             ]);
 
