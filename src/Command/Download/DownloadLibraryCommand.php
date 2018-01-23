@@ -18,7 +18,6 @@ class DownloadLibraryCommand extends Command {
         $this->setName('download:library');
         $this->setDescription('Download library');
 
-        $this->addOption('archived', 'a', InputOption::VALUE_NONE, 'Also download archived issues.');
         $this->addOption('clean', 'd', InputOption::VALUE_NONE, 'Delete original data.');
 
         $this->addOption('pdf', 'p', InputOption::VALUE_NONE, 'Convert to PDF.');
