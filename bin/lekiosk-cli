@@ -14,5 +14,6 @@ $application->add(new Command\ConfigureCommand());
 
 $application->add(new Command\Download\DownloadManualCommand());
 $application->add(new Command\Download\DownloadLinkCommand());
+$application->add(new Command\Download\DownloadLibraryCommand());
 
 $application->run();
