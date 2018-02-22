@@ -56,10 +56,34 @@ abstract class Reader {
 
         foreach ($data['signedUrls'] as $page => $content) {
 
-            $from = $content['hiresUrl'];
-            $to = $path.str_pad($page, 3, '0', STR_PAD_LEFT).'.jpg';
+            $steps = array('hiresUrl', 'bigUrl');
 
-            Request::download($to, $from);
+            foreach ($steps as $step) {
+
+                try {
+
+                    if (!isset($content[$step])) {
+                        throw new \Exception('Url not found ...');
+                    }
+
+                    $from = $content[$step];
+                    $to = $path.str_pad($page, 3, '0', STR_PAD_LEFT).'.jpg';
+
+                    Request::download($to, $from);
+
+                    break;
+                    
+                } catch (\Exception $e) {
+
+                    if ($step == end($steps)) {
+                        throw new \Exception('Can\'t download page '.$page.' ...');
+                    }
+
+                    continue;
+
+                }
+
+            }
 
             if (!is_null($output)) {
                 $progress->advance();
