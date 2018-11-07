@@ -8,7 +8,9 @@ use GuzzleHttp\Client;
 abstract class Request {
 
     const URL = 'https://api.lekiosk.com/api/v1/';
-    const USER_AGENT = 'lekioskworld/475 CFNetwork/811.5.4 Darwin/16.6.0';
+    const USER_AGENT = 'lekioskworld/552 CFNetwork/975.0.3 Darwin/18.2.0';
+    const APP_VERSION = '3.11.2';
+    const ACCESS_KEY_ID = 'iosp04';
 
     const GET_VERB = 'get';
     const POST_VERB = 'post';
@@ -25,8 +27,10 @@ abstract class Request {
                 'base_uri'  =>  self::URL,
                 'auth'      =>  [$config['username'], $config['password']],
                 'headers'   =>  [
-                    'User-Agent'    =>  self::USER_AGENT,
-                    'Accept'        =>  'Content-Type:application/json;appVersion:4.0.1;Authorization:Basic '.base64_encode($config['username'].':'.$config['password'])
+                    'User-Agent'        =>  self::USER_AGENT,
+                    'Authorization'     =>  'Basic '.base64_encode($config['username'].':'.$config['password']),
+                    'appVersion'        =>  self::APP_VERSION,
+                    'accessKeyId'       =>  self::ACCESS_KEY_ID
                 ]
             ]);
 
