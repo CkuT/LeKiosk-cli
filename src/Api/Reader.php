@@ -37,6 +37,24 @@ abstract class Reader {
 
         ksort($data['signedUrls']);
 
+        var_dump($data);
+
+        // Die ... for the moment ...
+        die();
+
+        // Cover : coverUrl
+        // Pages : signedUrls
+
+
+
+
+
+
+
+
+
+        
+
         $path = sys_get_temp_dir().DIRECTORY_SEPARATOR.uniqid().'_lekiosk-cli_'.$idPublication.'_'.$idIssue.DIRECTORY_SEPARATOR;
 
         if (!is_null($output)) {
